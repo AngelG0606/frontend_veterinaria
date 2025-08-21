@@ -4,9 +4,11 @@ import ErrroMessage from "../utils/ErrroMessage"
 import { useMutation } from "@tanstack/react-query"
 import { login } from "../../services/authApi"
 import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 export default function LoginForm() {
 
+    const navigate = useNavigate()
     const initialValues : UserLoginForm = {
         email : '',
         password : ''
@@ -19,7 +21,8 @@ export default function LoginForm() {
             toast.error(error.message)
         },
         onSuccess : () => {
-            toast.success('Inicio de sesión correcto')
+          toast.success('Inicio de sesión correcto')  
+          navigate('/dashboard')
         } 
     })
 

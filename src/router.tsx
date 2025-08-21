@@ -3,6 +3,8 @@ import Home from './views/Home'
 import AuthLayout from './layouts/AuthLayout'
 import RegisterView from './views/auth/RegisterView'
 import LoginView from './views/auth/LoginView'
+import AppLayout from './layouts/AppLayout'
+import DashboardView from './views/DashboardView'
 
 export default function AppRouter() {
   return (
@@ -13,6 +15,10 @@ export default function AppRouter() {
             <Route element={<AuthLayout />}>
               <Route path='/auth/register' element={<RegisterView />} />
               <Route path='/auth/login' element={<LoginView />} />
+            </Route>
+
+            <Route element={<AppLayout />} >
+              <Route path='/dashboard' element={<DashboardView /> } />
             </Route>
         </Routes>
     </BrowserRouter>
