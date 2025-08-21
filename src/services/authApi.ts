@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import type { UserLoginForm, UserRegisterForm } from "../types";
+import { UserDataSchema, type UserLoginForm, type UserRegisterForm } from "../types";
 
 export async function createAccount(formData: UserRegisterForm) {
     try {
@@ -31,6 +31,10 @@ export async function user() {
     try {
         const url = '/auth/user'
         const { data } = await api(url)
+        const response = UserDataSchema.safeParse(data)
+        if(response.success) {
+            return response.data
+        }
         return data
     } catch (error) {
         if(isAxiosError(error) && error.response) {

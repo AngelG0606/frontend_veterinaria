@@ -1,17 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import AppHeader from "../components/layouts/AppHeader";
 import Sidebar from "../components/layouts/Sidebar";
-import { useQuery } from "@tanstack/react-query";
-import { user } from "../services/authApi";
+import { useAuth } from "../hooks/useAuth";
 
 
 export default function AppLayout() {
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey : ['user'],
-    queryFn : user,
-    retry : false
-  })
+  const { data, isLoading, isError } = useAuth()
 
   if(isLoading) return <p className='text-5xl text-center mt-10'>Cargando...</p>
 
