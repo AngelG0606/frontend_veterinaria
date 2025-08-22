@@ -5,6 +5,7 @@ import RegisterView from './views/auth/RegisterView'
 import LoginView from './views/auth/LoginView'
 import AppLayout from './layouts/AppLayout'
 import DashboardView from './views/DashboardView'
+import PetView from './views/pets/PetView'
 
 export default function AppRouter() {
   return (
@@ -19,6 +20,7 @@ export default function AppRouter() {
 
             <Route element={<AppLayout />} >
               <Route path='/dashboard' element={<DashboardView /> } />
+              <Route path='/pets' element={<PetView /> } />
             </Route>
         </Routes>
     </BrowserRouter>
